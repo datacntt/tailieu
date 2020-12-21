@@ -1,0 +1,35 @@
+﻿
+CREATE VIEW PHIEUNHAP_SANPHAM AS
+
+SELECT        dbo.PHIEU_NHAP.MaPN AS "MÃ PHIẾU NHẬP", dbo.SAN_PHAM.TenSP AS "TÊN SẢN PHẨM", dbo.PHIEU_NHAP.NgayNhap AS "NGÀY NHẬP", dbo.PHIEU_NHAP.SLN AS "SỐ LƯỢNG NHẬP", dbo.PHIEU_NHAP.DONGIA AS "ĐƠN GIÁ NHẬP", dbo.NHA_CUNG_CAP.TenNCC AS "TÊN NHÀ CUNG CẤP", dbo.PHIEU_NHAP.TongTienNhap AS "TỔNG TIỀN NHẬP"
+FROM            dbo.NHA_CUNG_CAP INNER JOIN
+                         dbo.PHIEU_NHAP ON dbo.NHA_CUNG_CAP.MaNCC = dbo.PHIEU_NHAP.MaNCC INNER JOIN
+                         dbo.SAN_PHAM ON dbo.NHA_CUNG_CAP.MaNCC = dbo.SAN_PHAM.MaNCC AND dbo.PHIEU_NHAP.MaSP = dbo.SAN_PHAM.MaSP
+
+
+
+
+	
+CREATE VIEW PHIEUNHAP_SANPHAM_ALL AS
+
+SELECT        dbo.PHIEU_NHAP.MaPN AS "MÃ PHIẾU", dbo.SAN_PHAM.TenSP AS "SẢN PHẨM", dbo.PHIEU_NHAP.NgayNhap AS "NGÀY NHẬP", dbo.PHIEU_NHAP.SLN AS "SỐ LƯỢNG", dbo.PHIEU_NHAP.DONGIA AS "ĐƠN GIÁ", dbo.NHA_CUNG_CAP.TenNCC AS "NHÀ CUNG CẤP", dbo.PHIEU_NHAP.TongTienNhap AS "TIỀN NHẬP"
+FROM            dbo.NHA_CUNG_CAP INNER JOIN
+                         dbo.PHIEU_NHAP ON dbo.NHA_CUNG_CAP.MaNCC = dbo.PHIEU_NHAP.MaNCC INNER JOIN
+                         dbo.SAN_PHAM ON dbo.NHA_CUNG_CAP.MaNCC = dbo.SAN_PHAM.MaNCC AND dbo.PHIEU_NHAP.MaSP = dbo.SAN_PHAM.MaSP
+
+
+CREATE VIEW PHIEUNHAP_SANPHAM
+AS
+SELECT dbo.PHIEU_NHAP.MaPN AS "MÃ PHIẾU NHẬP",
+       dbo.SAN_PHAM.TenSP AS "TÊN SẢN PHẨM",
+       dbo.PHIEU_NHAP.NgayNhap AS "NGÀY NHẬP",
+       dbo.PHIEU_NHAP.SLN AS "SỐ LƯỢNG NHẬP",
+       dbo.PHIEU_NHAP.DONGIA AS "ĐƠN GIÁ NHẬP",
+       dbo.NHA_CUNG_CAP.TenNCC AS "TÊN NHÀ CUNG CẤP",
+       dbo.PHIEU_NHAP.TongTienNhap AS "TỔNG TIỀN NHẬP"
+FROM dbo.NHA_CUNG_CAP
+    INNER JOIN dbo.PHIEU_NHAP
+        ON dbo.NHA_CUNG_CAP.MaNCC = dbo.PHIEU_NHAP.MaNCC
+    INNER JOIN dbo.SAN_PHAM
+        ON dbo.NHA_CUNG_CAP.MaNCC = dbo.SAN_PHAM.MaNCC
+           AND dbo.PHIEU_NHAP.MaSP = dbo.SAN_PHAM.MaSP
